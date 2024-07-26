@@ -31,6 +31,8 @@ namespace Tests.Editor
         }
         
         [TestCase(15)]
+        [TestCase(30)]
+        [TestCase(300)]
         public void When_NumberIsDivisibleBy5and3_ReturnFizzBuzz(int number)
         {
             Assert.AreEqual("FizzBuzz", FizzBuzz.ConvertNumber(number));
