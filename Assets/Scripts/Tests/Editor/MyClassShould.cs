@@ -4,14 +4,14 @@ namespace Tests.Editor
     [TestFixture]
     public class MyClassShould
     {
+        private FizzBuzz fizzBuzz;
+
         [TestCase(1)]
         [TestCase(2)]
         public void Return_Same_Number_When_Is_Not_Divisible(int input)
         {
-            //arrange
-            NumberConversion numberConversion = new NumberConversion();
             //act
-            var value = numberConversion.Execute(input);
+            var value = fizzBuzz.Execute(input);
             //test
             Assert.AreEqual(input.ToString(), value);
         }
@@ -19,10 +19,8 @@ namespace Tests.Editor
         [TestCase(3)]
         public void Return_Fizz_When_Is_Divisible_By_Three(int input)
         {
-            //arrange
-            NumberConversion numberConversion = new NumberConversion();
             //act
-            var value = numberConversion.Execute(input);
+            var value = fizzBuzz.Execute(input);
             //test
             Assert.AreEqual("Fizz", value);
         }
@@ -30,10 +28,8 @@ namespace Tests.Editor
         [TestCase(5)]
         public void Return_Buzz_When_Is_Divisible_By_Five(int input)
         {
-            //arrange
-            NumberConversion numberConversion = new NumberConversion();
             //act
-            var value = numberConversion.Execute(input);
+            var value = fizzBuzz.Execute(input);
             //test
             Assert.AreEqual("Buzz", value);
         }
@@ -41,16 +37,20 @@ namespace Tests.Editor
         [TestCase(15)]
         public void Return_FizzBuzz_When_Is_Divisible_By_Five_And_Three(int input)
         {
-            //arrange
-            NumberConversion numberConversion = new NumberConversion();
             //act
-            var value = numberConversion.Execute(input);
+            var value = fizzBuzz.Execute(input);
             //test
             Assert.AreEqual("FizzBuzz", value);
         }
+
+        [SetUp]
+        public void Setup_FizzBuzz()
+        {
+            fizzBuzz = new FizzBuzz();
+        }
     }
 
-    public class NumberConversion
+    public class FizzBuzz
     {
         public object Execute(int i)
         {
