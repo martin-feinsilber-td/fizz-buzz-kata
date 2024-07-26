@@ -46,7 +46,7 @@ namespace Tests.Editor
         }
 
         [TestCase(55)]
-        [TestCase(52)]
+        [TestCase(59)]
         public void When_NumberContains5_ReturnBuzz(int number)
         {
             Assert.AreEqual("Buzz", FizzBuzzKata.ConvertNumber(number));
@@ -57,6 +57,27 @@ namespace Tests.Editor
         public void When_NumberContains3and5_ReturnFizzBuzz(int number)
         {
             Assert.AreEqual("FizzBuzz", FizzBuzzKata.ConvertNumber(number));
+        }
+
+        [TestCase(7)]
+        [TestCase(61)]
+        public void When_SumOfDigitIs7_ReturnWhizz(int number)
+        {
+            Assert.AreEqual("Whizz", FizzBuzzKata.ConvertNumber(number));
+        }
+
+        [TestCase(43)]
+        [TestCase(34)]
+        public void When_SumOfDigitIs7AndContains3_ReturnFizzWhizz(int number)
+        {
+            Assert.AreEqual("FizzWhizz", FizzBuzzKata.ConvertNumber(number));
+        }
+
+        [TestCase(25)]
+        [TestCase(52)]
+        public void When_SumOfDigitIs7AndContains5_ReturnBuzzWhizz(int number)
+        {
+            Assert.AreEqual("BuzzWhizz", FizzBuzzKata.ConvertNumber(number));
         }
     }
 }
