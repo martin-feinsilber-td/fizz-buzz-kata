@@ -8,13 +8,23 @@ namespace DefaultNamespace
         public static string ConvertNumber(int number)
         {
             var result = "";
-            if (number.ToString().Contains('3') || number % 3 == 0) {
+            if (CheckForFizz(number)) {
                 result += Fizz;
             }
-            if (number.ToString().Contains('5') || number % 5 == 0) {
+            if (CheckForBuzz(number)) {
                 result += Buzz;
             }
             return result.Length > 0 ? result : number.ToString();
+        }
+
+        private static bool CheckForFizz(int number)
+        {
+            return number.ToString().Contains('3') || number % 3 == 0;
+        }
+
+        private static bool CheckForBuzz(int number)
+        {
+            return number.ToString().Contains('5') || number % 5 == 0;
         }
     }
 }

@@ -51,5 +51,12 @@ namespace Tests.Editor
         {
             Assert.AreEqual("Buzz", FizzBuzzKata.ConvertNumber(number));
         }
+
+        [TestCase(35)]
+        [TestCase(51)]
+        public void When_NumberContains3and5_ReturnFizzBuzz(int number)
+        {
+            Assert.AreEqual("FizzBuzz", FizzBuzzKata.ConvertNumber(number));
+        }
     }
 }
