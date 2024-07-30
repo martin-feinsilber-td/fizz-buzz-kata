@@ -6,17 +6,31 @@ namespace Tests.Editor
     [TestFixture]
     public class FizzBuzzShould
     {
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(3)]
-        public void Return_Same_Number(int input)
+        private FizzBuzz fizzBuzz;
+        [SetUp]
+        public void SetUp()
         {
             //arrange
-            var fizzBuzz = new FizzBuzz();
+            fizzBuzz = new FizzBuzz();
+        }
+        
+        [TestCase(1)]
+        [TestCase(2)]
+        public void Return_Same_Number(int input)
+        {
             //act
             var result = fizzBuzz.Execute(input);
             //assert
             Assert.AreEqual(input.ToString(), result);
+        }
+        
+        [TestCase(3)]
+        public void Return_Fizz_If_Number_Is_Divisible_By_3(int input)
+        {
+            //act
+            var result = fizzBuzz.Execute(input);
+            //assert
+            Assert.AreEqual("Fizz", result);
         }
     }
 
@@ -24,7 +38,7 @@ namespace Tests.Editor
     {
         public string Execute(int input)
         {
-            return input.ToString();
+            return input % 3 == 0 ? "Fizz" : input.ToString();
         }
     }
 }
