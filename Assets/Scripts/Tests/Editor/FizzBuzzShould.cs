@@ -1,5 +1,4 @@
-﻿using NSubstitute;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Tests.Editor
 {
@@ -7,6 +6,7 @@ namespace Tests.Editor
     public class FizzBuzzShould
     {
         private FizzBuzz fizzBuzz;
+
         [SetUp]
         public void SetUp()
         {
@@ -25,20 +25,51 @@ namespace Tests.Editor
         }
         
         [TestCase(3)]
-        public void Return_Fizz_If_Number_Is_Divisible_By_3(int input)
+        [TestCase(6)]
+        public void Return_Fizz_If_Number_Is_Only_Divisible_By_3(int input)
         {
-            //act
             var result = fizzBuzz.Execute(input);
-            //assert
-            Assert.AreEqual("Fizz", result);
+            Assert.AreEqual(FizzBuzz.FizzMessage, result);
+        }
+        
+        [TestCase(5)]
+        [TestCase(50)]
+        [TestCase(55)]
+        public void Return_Buzz_If_Number_Is_Only_Divisible_By_5(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.BuzzMessage, result);
+        }
+        
+        [TestCase(15)]
+        public void Return_FizzBuzz_If_Number_Is_Divisible_By_3_And_5(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.FizzBuzzMessage, result);
         }
     }
 
     public class FizzBuzz
     {
+        public const string FizzMessage = "Fizz";
+        public const string BuzzMessage = "Buzz";
+        public const string FizzBuzzMessage = FizzMessage + BuzzMessage;
+        
         public string Execute(int input)
         {
-            return input % 3 == 0 ? "Fizz" : input.ToString();
+            if (input % 3 == 0 && input % 5 == 0) {
+                return FizzBuzzMessage;
+            }
+            
+            if (input % 3 == 0) {
+                return FizzMessage;
+            }
+            
+            if (input % 5 == 0) {
+                return BuzzMessage;
+            }
+
+            return input.ToString();
         }
     }
 }
