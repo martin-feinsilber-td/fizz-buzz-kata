@@ -6,7 +6,7 @@ namespace DefaultNamespace
         private const string Buzz = "Buzz";
         private const string Whizz = "Whizz";
 
-        public static string ConvertNumber(int number)
+        public string ConvertNumber(int number)
         {
             var result = "";
             if (FizzCheck(number)) {
@@ -21,23 +21,23 @@ namespace DefaultNamespace
             return result.Length > 0 ? result : number.ToString();
         }
 
-        private static bool WhizzCheck(int number)
+        private bool WhizzCheck(int number)
         {
             var sum = 0;
             foreach (var digit in number.ToString()) {
                 if (digit is >= '0' and <= '9') {
-                    sum += int.Parse(digit.ToString());
+                    sum += digit - '0';
                 }
             }
             return sum == 7;
         }
 
-        private static bool FizzCheck(int number)
+        private bool FizzCheck(int number)
         {
             return number.ToString().Contains('3') || number % 3 == 0;
         }
 
-        private static bool BuzzCheck(int number)
+        private bool BuzzCheck(int number)
         {
             return number.ToString().Contains('5') || number % 5 == 0;
         }
