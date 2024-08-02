@@ -31,7 +31,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("Fizz", value);
+            Assert.AreEqual(FizzBuzz.Fizz, value);
         }
         
         [TestCase(5)]
@@ -40,7 +40,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("Buzz", value);
+            Assert.AreEqual(FizzBuzz.Buzz, value);
         }
         
         [TestCase(15)]
@@ -49,7 +49,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("FizzBuzz", value);
+            Assert.AreEqual(FizzBuzz.Fizz + FizzBuzz.Buzz, value);
         }
 
         [TestCase(3)]
@@ -60,7 +60,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("Fizz", value);
+            Assert.AreEqual(FizzBuzz.Fizz, value);
         }
         
         [TestCase(5)]
@@ -70,7 +70,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("Buzz", value);
+            Assert.AreEqual(FizzBuzz.Buzz, value);
         }
         
         [TestCase(53)]
@@ -79,7 +79,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("FizzBuzz", value);
+            Assert.AreEqual(FizzBuzz.Fizz + FizzBuzz.Buzz, value);
         }
         
         [TestCase(51)]
@@ -88,7 +88,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("FizzBuzz", value);
+            Assert.AreEqual(FizzBuzz.Fizz + FizzBuzz.Buzz, value);
         }
         
         [TestCase(30)]
@@ -97,7 +97,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("FizzBuzz", value);
+            Assert.AreEqual(FizzBuzz.Fizz + FizzBuzz.Buzz, value);
         }
         
         [TestCase(9)]
@@ -119,7 +119,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("Whizz", value);
+            Assert.AreEqual(FizzBuzz.Whizz, value);
         }
         
         [TestCase(34)]
@@ -129,7 +129,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("FizzWhizz", value);
+            Assert.AreEqual(FizzBuzz.Fizz + FizzBuzz.Whizz, value);
         }
         
         [TestCase(52)]
@@ -139,7 +139,7 @@ namespace Tests.Editor
             //act
             var value = fizzBuzz.Execute(input);
             //test
-            Assert.AreEqual("BuzzWhizz", value);
+            Assert.AreEqual(FizzBuzz.Buzz + FizzBuzz.Whizz, value);
         }
     }
 }
