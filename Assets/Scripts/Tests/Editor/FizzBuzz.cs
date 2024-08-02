@@ -1,49 +1,29 @@
+using System.Collections.Generic;
+
 namespace Tests.Editor
 {
     public class FizzBuzz
     {
-        public const string FizzMessage = "Fizz";
-        public const string BuzzMessage = "Buzz";
-        public const string WhizzMessage = "Whizz";
-        public const string FizzBuzzMessage = FizzMessage + BuzzMessage;
-        public const string BuzzWhizzMessage = BuzzMessage + WhizzMessage;
+        private readonly List<IGetInputMessageStrategy> strategies;
 
-        public const int FizzNumber = 3;
-        public const int BuzzNumber = 5;
-        public const int SumForWhizz = 7;
-        
+        public FizzBuzz()
+        {
+            strategies = new List<IGetInputMessageStrategy> {
+                new FizzStrategy(),
+                new BuzzStrategy(),
+                new WhizzStrategy(),
+            };
+        }
+
         public string Execute(int input)
         {
             var result = string.Empty;
 
-            if (input % FizzNumber == 0 || input.ToString().Contains(FizzNumber.ToString())) {
-                result += FizzMessage;
-            }
-            
-            if (input % BuzzNumber == 0 || input.ToString().Contains(BuzzNumber.ToString())) {
-                result += BuzzMessage;
-            }
-            
-            if (SumInputCharactersValue(input.ToString()) == SumForWhizz) {
-                result += WhizzMessage;
+            foreach (var strategy in strategies) {
+                result += strategy.GetMessage(input);
             }
 
-            if (string.IsNullOrEmpty(result)) {
-                return input.ToString();
-            }
-            
-            return result;
-        }
-
-        private int SumInputCharactersValue(string input)
-        {
-            var result = 0;
-            foreach (var character in input) {
-                if (int.TryParse(character.ToString(), out var digit)) {
-                    result += digit;
-                }
-            }
-            return result;
+            return string.IsNullOrEmpty(result) ? input.ToString() : result;
         }
     }
 }
