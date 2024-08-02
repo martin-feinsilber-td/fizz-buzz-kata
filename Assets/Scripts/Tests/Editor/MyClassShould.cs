@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Text;
+using NUnit.Framework;
+using UnityEngine;
+
 namespace Tests.Editor
 {
     [TestFixture]
@@ -6,6 +9,12 @@ namespace Tests.Editor
     {
         private FizzBuzz fizzBuzz;
 
+        [SetUp]
+        public void Setup_FizzBuzz()
+        {
+            fizzBuzz = new FizzBuzz();
+        }
+        
         [TestCase(1)]
         [TestCase(2)]
         public void Return_Same_Number_When_Is_Not_Divisible(int input)
@@ -43,28 +52,6 @@ namespace Tests.Editor
             Assert.AreEqual("FizzBuzz", value);
         }
 
-        [SetUp]
-        public void Setup_FizzBuzz()
-        {
-            fizzBuzz = new FizzBuzz();
-        }
-    }
-
-    public class FizzBuzz
-    {
-        public object Execute(int i)
-        {
-            if (i % 15 == 0) {
-                return "FizzBuzz";
-            }
-            else if (i % 3 == 0) {
-                return "Fizz";
-            }
-            else if (i % 5 == 0) {
-                return "Buzz";
-            }
-            
-            return i.ToString();
-        }
+        
     }
 }
