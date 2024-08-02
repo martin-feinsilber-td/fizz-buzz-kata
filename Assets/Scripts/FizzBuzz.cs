@@ -6,16 +6,36 @@ public class FizzBuzz
 {
     public object Execute(int i)
     {
-        if (i % 15 == 0) {
+        bool fizz = false;
+        bool buzz = false;
+        
+        if (i.ToString().Contains('3')) {
+            fizz = true;
+        }
+        
+        if (i.ToString().Contains('5')) {
+            buzz = true;
+        }
+        
+        if (i % 3 == 0) {
+            fizz = true;
+        }
+        
+        if (i % 5 == 0) {
+            buzz = true;
+        }
+
+        if (fizz && buzz) {
             return "FizzBuzz";
         }
-        else if (i % 3 == 0) {
+        else if (fizz) {
             return "Fizz";
         }
-        else if (i % 5 == 0) {
+        else if (buzz) {
             return "Buzz";
         }
-            
-        return i.ToString();
+        else {
+            return i.ToString();
+        }
     }
 }
