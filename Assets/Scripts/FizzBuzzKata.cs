@@ -34,12 +34,12 @@ namespace DefaultNamespace
 
         private bool FizzCheck(int number)
         {
-            return number.ToString().Contains('3') || number % 3 == 0;
+            return number % 3 == 0 || number.ToString().Contains('3');
         }
 
         private bool BuzzCheck(int number)
         {
-            return number.ToString().Contains('5') || number % 5 == 0;
+            return number % 5 == 0 || number.ToString().Contains('5');
         }
     }
 }
