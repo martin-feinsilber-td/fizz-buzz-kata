@@ -14,6 +14,11 @@ public class FizzBuzz
             result += "Buzz";
         }
 
+        if (GetSumOfDigits(value) == 7)
+        {
+            result += "Whizz";
+        }
+
         return result == string.Empty ? value.ToString() : result;
     }
 
@@ -30,5 +35,18 @@ public class FizzBuzz
         }
 
         return false;
+    }
+
+    private int GetSumOfDigits(int value)
+    {
+        var sum = 0;
+
+        while (value != 0)
+        {
+            sum += value % 10;
+            value /= 10;
+        }
+
+        return sum;
     }
 }

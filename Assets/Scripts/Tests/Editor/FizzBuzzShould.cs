@@ -53,7 +53,7 @@ namespace Tests.Editor
             Assert.AreEqual("Fizz", value);
         }
 
-        [TestCase(52)]
+        [TestCase(56)]
         public void Print_Buzz_When_Has_Five_In_It(int input)
         {
             var value = fizzBuzz.GetElement(input);
@@ -72,6 +72,27 @@ namespace Tests.Editor
         {
             var value = fizzBuzz.GetElement(input);
             Assert.AreEqual("FizzBuzz", value);
+        }
+
+        [TestCase(16)]
+        public void Print_Whizz_When_Sum_Of_Digits_Is_Equal_To_Seven(int input)
+        {
+            var value = fizzBuzz.GetElement(input);
+            Assert.AreEqual("Whizz", value);
+        }
+
+        [TestCase(34)]
+        public void Print_FizzWhizz_When_Has_Three_In_It_Sum_Of_Digits_Is_Equal_To_Seven(int input)
+        {
+            var value = fizzBuzz.GetElement(input);
+            Assert.AreEqual("FizzWhizz", value);
+        }
+
+        [TestCase(25)]
+        public void Print_BuzzWhizz_When_Is_Divisible_By_Five_And_Sum_Of_Digits_Is_Equal_To_Seven(int input)
+        {
+            var value = fizzBuzz.GetElement(input);
+            Assert.AreEqual("BuzzWhizz", value);
         }
     }
 }
