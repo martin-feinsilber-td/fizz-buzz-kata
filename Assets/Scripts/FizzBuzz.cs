@@ -1,41 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class FizzBuzz
 {
     public object Execute(int i)
     {
-        bool fizz = false;
-        bool buzz = false;
+        StringBuilder result = new StringBuilder();
         
-        if (i.ToString().Contains('3')) {
-            fizz = true;
+        if (i % 3 == 0 || i.ToString().Contains('3')) {
+            result.Append("Fizz");
         }
         
-        if (i.ToString().Contains('5')) {
-            buzz = true;
-        }
-        
-        if (i % 3 == 0) {
-            fizz = true;
-        }
-        
-        if (i % 5 == 0) {
-            buzz = true;
+        if (i % 5 == 0 || i.ToString().Contains('5')) {
+            result.Append("Buzz");
         }
 
-        if (fizz && buzz) {
-            return "FizzBuzz";
+        if (SumOfDigits(i) == 7) {
+            result.Append("Whizz");
         }
-        else if (fizz) {
-            return "Fizz";
+        
+        return result.Length == 0 ? i.ToString() : result.ToString();
+    }
+
+    public int SumOfDigits(int number)
+    {
+        var result = 0;
+        while (number > 0) {
+            result += number % 10;
+            number /= 10;
         }
-        else if (buzz) {
-            return "Buzz";
-        }
-        else {
-            return i.ToString();
-        }
+        return result;
     }
 }
