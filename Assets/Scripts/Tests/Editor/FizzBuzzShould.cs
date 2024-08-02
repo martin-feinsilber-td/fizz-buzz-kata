@@ -10,7 +10,6 @@ namespace Tests.Editor
         [SetUp]
         public void SetUp()
         {
-            //arrange
             fizzBuzz = new FizzBuzz();
         }
         
@@ -18,9 +17,7 @@ namespace Tests.Editor
         [TestCase(2)]
         public void Return_Same_Number(int input)
         {
-            //act
             var result = fizzBuzz.Execute(input);
-            //assert
             Assert.AreEqual(input.ToString(), result);
         }
         
@@ -47,29 +44,41 @@ namespace Tests.Editor
             var result = fizzBuzz.Execute(input);
             Assert.AreEqual(FizzBuzz.FizzBuzzMessage, result);
         }
-    }
 
-    public class FizzBuzz
-    {
-        public const string FizzMessage = "Fizz";
-        public const string BuzzMessage = "Buzz";
-        public const string FizzBuzzMessage = FizzMessage + BuzzMessage;
-        
-        public string Execute(int input)
+        [TestCase(13)]
+        public void Return_Fizz_If_Number_Contains_3(int input)
         {
-            if (input % 3 == 0 && input % 5 == 0) {
-                return FizzBuzzMessage;
-            }
-            
-            if (input % 3 == 0) {
-                return FizzMessage;
-            }
-            
-            if (input % 5 == 0) {
-                return BuzzMessage;
-            }
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.FizzMessage, result);
+        }
 
-            return input.ToString();
+        [TestCase(5)]
+        public void Return_Buzz_If_Number_Contains_5(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.BuzzMessage, result);
+        }
+
+        [TestCase(35)]
+        [TestCase(53)]
+        public void Return_FizzBuzz_If_Number_Contains_5_And_3(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.FizzBuzzMessage, result);
+        }
+
+        [TestCase(61)]
+        public void Return_Whizz_If_Sum_Of_Digits_Equals_7(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.WhizzMessage, result);
+        }
+        
+        [TestCase(52)]
+        public void Return_BuzzWhizz_If_Sum_Of_Digits_Equals_7_And_Contains_5(int input)
+        {
+            var result = fizzBuzz.Execute(input);
+            Assert.AreEqual(FizzBuzz.BuzzWhizzMessage, result);
         }
     }
 }
