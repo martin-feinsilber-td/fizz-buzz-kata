@@ -1,45 +1,24 @@
+using System.Collections.Generic;
+
 namespace DefaultNamespace
 {
     public class FizzBuzzKata
     {
-        private const string Fizz = "Fizz";
-        private const string Buzz = "Buzz";
-        private const string Whizz = "Whizz";
+        private readonly IEnumerable<ISuffixRule> suffixRules = new ISuffixRule[] {
+            new FizzRule(),
+            new BuzzRule(),
+            new WhizzRule(),
+        };
 
         public string ConvertNumber(int number)
         {
             var result = "";
-            if (FizzCheck(number)) {
-                result += Fizz;
-            }
-            if (BuzzCheck(number)) {
-                result += Buzz;
-            }
-            if (WhizzCheck(number)) {
-                result += Whizz;
-            }
-            return result.Length > 0 ? result : number.ToString();
-        }
-
-        private bool WhizzCheck(int number)
-        {
-            var sum = 0;
-            foreach (var digit in number.ToString()) {
-                if (digit is >= '0' and <= '9') {
-                    sum += digit - '0';
+            foreach (var rule in suffixRules) {
+                if (rule.Check(number)) {
+                    result += rule.Suffix;
                 }
             }
-            return sum == 7;
-        }
-
-        private bool FizzCheck(int number)
-        {
-            return number % 3 == 0 || number.ToString().Contains('3');
-        }
-
-        private bool BuzzCheck(int number)
-        {
-            return number % 5 == 0 || number.ToString().Contains('5');
+            return result.Length > 0 ? result : number.ToString();
         }
     }
 }
